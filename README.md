@@ -1,6 +1,7 @@
 This is going to be a long project...
 
 The goal is to build a twitter clone.
+
 The tech-stack is:
 Frontend:
 - TypeScript
