@@ -3,8 +3,6 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 import { useStyles } from '../pages/SignIn';
 
 interface ModalBlockProps {
@@ -49,13 +47,6 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({
                 id="form-dialog-title"
                 style={{ border: 'none', fontSize: 26, padding: '0 24px' }}
             >
-                {/* <IconButton
-                    onClick={onClose}
-                    color="secondary"
-                    aria-label="close"
-                >
-                    <CloseIcon style={{ fontSize: 26 }} color="secondary" />
-                </IconButton> */}
                 {title}
             </DialogTitle>
             <DialogContent>{children}</DialogContent>

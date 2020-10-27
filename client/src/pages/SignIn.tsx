@@ -9,7 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import { ModalBlock } from '../components/ModalBlock';
 
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles(() => ({
     wrapper: {
         display: 'flex',
         height: '100vh',
@@ -29,8 +29,8 @@ export const useStyles = makeStyles((theme) => ({
         top: '55%',
         transform: 'translate(-50%, -50%)',
         color: '#1DA1F2',
-        width: '350%',
-        height: '350%',
+        width: '200%',
+        height: '200%',
     },
     blueSideList: {
         listStyle: 'none',
@@ -85,7 +85,7 @@ export const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const SignIn = () => {
+export const SignIn = (): React.ReactElement => {
     const classes = useStyles();
 
     const [visibleModal, setVisibleModal] = React.useState<
@@ -261,5 +261,3 @@ const SignIn = () => {
         </div>
     );
 };
-
-export default SignIn;
