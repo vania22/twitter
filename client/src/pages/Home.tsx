@@ -1,30 +1,19 @@
 import React, { useState } from 'react';
-import classnames from 'classnames';
+
 import {
     Container,
     Grid,
     Hidden,
-    IconButton,
     makeStyles,
     InputBase,
     Typography,
     withStyles,
     Paper,
-    Avatar,
 } from '@material-ui/core';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
-import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
-import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
-import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
-import ListAltOutlinedIcon from '@material-ui/icons/ListAltOutlined';
-import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
-import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
 import SearchIcon from '@material-ui/icons/Search';
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import RepeatIcon from '@material-ui/icons/Repeat';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import ReplyIcon from '@material-ui/icons/Reply';
+
+import { Tweet } from '../components/Tweet';
+import { SideMenu } from '../components/SideMenu';
 
 export const useHomeStyles = makeStyles(() => ({
     wrapper: {
@@ -47,20 +36,31 @@ export const useHomeStyles = makeStyles(() => ({
         display: 'flex',
         alignItems: 'center',
         color: '#fff',
+        margin: '5px 0',
         cursor: 'pointer',
+
+        '& button': {
+            padding: 10,
+            borderRadius: 30,
+            transition: 'background-color 0.2s ease-in-out',
+            '&:hover': {
+                backgroundColor: 'rgba(29, 161, 242, 0.1) ',
+                color: '#1DA1F2',
+                '& svg': {
+                    color: '#1DA1F2',
+                },
+            },
+        },
+        '& svg': {
+            width: 30,
+            height: 30,
+        },
         '& h6': {
             fontWeight: 700,
             fontSize: 20,
             marginLeft: 15,
             '@media (max-width: 1280px)': {
                 display: 'none',
-            },
-        },
-        '& svg': {
-            fontSize: 28,
-            color: '#fff',
-            '&:hover': {
-                color: '#1DA1F2',
             },
         },
     },
@@ -108,11 +108,11 @@ export const useHomeStyles = makeStyles(() => ({
     },
     tweetFooter: {
         display: 'flex',
-        justifyContent: 'space-between',
         width: 450,
     },
     tweetIconContainer: {
         color: '#8e8a8a',
+        marginRight: '12.5%',
         '& svg': {
             color: '#8e8a8a',
         },
@@ -160,61 +160,10 @@ export const Home = (): React.ReactElement => {
     return (
         <Container maxWidth="lg" className={classes.wrapper}>
             <Grid container spacing={3}>
-                <Grid item xs={2} sm={2} md={1} lg={2}>
-                    <ul className={classes.sideMenuList}>
-                        <li className={classes.sideMenuListItem}>
-                            <IconButton
-                                color="primary"
-                                className={classes.logoButton}
-                            >
-                                <TwitterIcon className={classes.logoSvg} />
-                            </IconButton>
-                        </li>
-                        <li className={classes.sideMenuListItem}>
-                            <IconButton>
-                                <LocalOfferOutlinedIcon />
-                            </IconButton>
-                            <Typography variant="h6">Search</Typography>
-                        </li>
-                        <li className={classes.sideMenuListItem}>
-                            <IconButton>
-                                <NotificationsNoneOutlinedIcon />
-                            </IconButton>
-                            <Typography variant="h6">Notifications</Typography>
-                        </li>
-                        <li className={classes.sideMenuListItem}>
-                            <IconButton>
-                                <EmailOutlinedIcon />
-                            </IconButton>
-                            <Typography variant="h6">Messages</Typography>
-                        </li>
-                        <li className={classes.sideMenuListItem}>
-                            <IconButton>
-                                <BookmarkBorderOutlinedIcon />
-                            </IconButton>
-                            <Typography variant="h6">Saved</Typography>
-                        </li>
-                        <li className={classes.sideMenuListItem}>
-                            <IconButton>
-                                <ListAltOutlinedIcon />
-                            </IconButton>
-                            <Typography variant="h6">List</Typography>
-                        </li>
-                        <li className={classes.sideMenuListItem}>
-                            <IconButton>
-                                <PermIdentityOutlinedIcon />
-                            </IconButton>
-                            <Typography variant="h6">Profile</Typography>
-                        </li>
-                        <li className={classes.sideMenuListItem}>
-                            <IconButton>
-                                <MoreHorizOutlinedIcon />
-                            </IconButton>
-                            <Typography variant="h6">More</Typography>
-                        </li>
-                    </ul>
+                <Grid item xs={2} sm={1} md={1} lg={2}>
+                    <SideMenu classes={classes} />
                 </Grid>
-                <Grid item xs={9} sm={9} md={8} lg={7}>
+                <Grid item xs={9} sm={10} md={8} lg={7}>
                     <Paper className={classes.tweetsWrapper} variant="outlined">
                         <Paper
                             variant="outlined"
@@ -222,6 +171,17 @@ export const Home = (): React.ReactElement => {
                         >
                             <Typography variant="h6">Home</Typography>
                         </Paper>
+                        <Tweet
+                            user={{
+                                fullname: 'React Newsletter',
+                                username: 'reactnewsletter',
+                                avatarUrl:
+                                    'https://hackernoon.com/hn-images/1*y6C4nSvy2Woe0m7bWEn4BA.png',
+                            }}
+                            text="Official account for 2020 Challenge Cup winners + eight times Mens Super League Champions & Womens Challenge Cup  Super League Double winners Leeds Rhinos"
+                            time="1h"
+                            classes={classes}
+                        />
                     </Paper>
                 </Grid>
                 <Hidden smDown>

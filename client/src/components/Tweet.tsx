@@ -19,7 +19,7 @@ interface TweetProps {
     time: string;
 }
 
-const Tweet: React.FC<TweetProps> = ({
+export const Tweet: React.FC<TweetProps> = ({
     classes,
     user,
     text,
@@ -32,7 +32,10 @@ const Tweet: React.FC<TweetProps> = ({
         >
             <Grid container spacing={3}>
                 <Grid item xs={1}>
-                    <Avatar alt="User" src={user.avatarUrl} />
+                    <Avatar
+                        alt={`${user.username} avatar`}
+                        src={user.avatarUrl}
+                    />
                 </Grid>
                 <Grid item xs={11}>
                     <Typography className={classes.tweetsUserInfo}>
@@ -70,5 +73,3 @@ const Tweet: React.FC<TweetProps> = ({
         </Paper>
     );
 };
-
-export default Tweet;
