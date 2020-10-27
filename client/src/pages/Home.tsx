@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classnames from 'classnames';
 import {
     Container,
     Grid,
@@ -9,6 +10,7 @@ import {
     Typography,
     withStyles,
     Paper,
+    Avatar,
 } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
@@ -19,8 +21,12 @@ import ListAltOutlinedIcon from '@material-ui/icons/ListAltOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
 import SearchIcon from '@material-ui/icons/Search';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import RepeatIcon from '@material-ui/icons/Repeat';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import ReplyIcon from '@material-ui/icons/Reply';
 
-const useHomeStyles = makeStyles(() => ({
+export const useHomeStyles = makeStyles(() => ({
     wrapper: {
         height: '100vh',
     },
@@ -63,7 +69,6 @@ const useHomeStyles = makeStyles(() => ({
         top: 22,
         left: 15,
         zIndex: 1,
-        color: '#8e8a8a',
     },
     tweetsWrapper: {
         borderRadius: 0,
@@ -83,11 +88,39 @@ const useHomeStyles = makeStyles(() => ({
         borderRadius: 0,
         backgroundColor: '#15202b',
         color: '#fff',
-        padding: '0 15px',
-        height: 53,
+        padding: '10px 15px',
+        minHeight: 53,
         borderColor: 'rgba(103, 100, 100, 0.544)',
         '& h6': {
             fontWeight: 700,
+        },
+    },
+    tweet: {
+        '&:hover': {
+            backgroundColor: 'rgba(30, 45, 61, 0.639)',
+        },
+    },
+    tweetsUserInfo: {
+        color: '#8e8a8a',
+        '& b': {
+            color: '#fff',
+        },
+    },
+    tweetFooter: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: 450,
+    },
+    tweetIconContainer: {
+        color: '#8e8a8a',
+        '& svg': {
+            color: '#8e8a8a',
+        },
+        '&:hover': {
+            color: '#1DA1F2',
+            '& svg': {
+                color: '#1DA1F2',
+            },
         },
     },
     rightSide: {
@@ -188,12 +221,6 @@ export const Home = (): React.ReactElement => {
                             className={classes.tweetsHeader}
                         >
                             <Typography variant="h6">Home</Typography>
-                        </Paper>
-                        <Paper
-                            variant="outlined"
-                            className={classes.tweetsHeader}
-                        >
-                            <Grid></Grid>
                         </Paper>
                     </Paper>
                 </Grid>
