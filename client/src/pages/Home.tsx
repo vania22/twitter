@@ -90,6 +90,11 @@ const useHomeStyles = makeStyles(() => ({
             fontWeight: 700,
         },
     },
+    rightSide: {
+        '@media (max-width: 1010px)': {
+            display: 'none',
+        },
+    },
 }));
 
 const SearchInput = withStyles({
@@ -122,7 +127,7 @@ export const Home = (): React.ReactElement => {
     return (
         <Container maxWidth="lg" className={classes.wrapper}>
             <Grid container spacing={3}>
-                <Grid item xs={2} sm={2} md={1} lg={3}>
+                <Grid item xs={2} sm={2} md={1} lg={2}>
                     <ul className={classes.sideMenuList}>
                         <li className={classes.sideMenuListItem}>
                             <IconButton
@@ -176,7 +181,7 @@ export const Home = (): React.ReactElement => {
                         </li>
                     </ul>
                 </Grid>
-                <Grid item xs={9} sm={9} md={8} lg={6}>
+                <Grid item xs={9} sm={9} md={8} lg={7}>
                     <Paper className={classes.tweetsWrapper} variant="outlined">
                         <Paper
                             variant="outlined"
@@ -184,10 +189,16 @@ export const Home = (): React.ReactElement => {
                         >
                             <Typography variant="h6">Home</Typography>
                         </Paper>
+                        <Paper
+                            variant="outlined"
+                            className={classes.tweetsHeader}
+                        >
+                            <Grid></Grid>
+                        </Paper>
                     </Paper>
                 </Grid>
                 <Hidden smDown>
-                    <Grid item md={3} lg={3}>
+                    <Grid item md={3} lg={3} className={classes.rightSide}>
                         <div style={{ position: 'relative' }}>
                             <SearchInput
                                 fullWidth
