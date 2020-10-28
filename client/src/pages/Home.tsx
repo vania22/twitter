@@ -9,8 +9,12 @@ import {
     Typography,
     withStyles,
     Paper,
+    Divider,
+    Avatar,
+    IconButton,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 
 import { Tweet } from '../components/Tweet';
 import { SideMenu } from '../components/SideMenu';
@@ -59,8 +63,30 @@ export const useHomeStyles = makeStyles(() => ({
             fontWeight: 700,
             fontSize: 20,
             marginLeft: 15,
-            '@media (max-width: 1280px)': {
-                display: 'none',
+        },
+    },
+    createTweetSideMenuButton: {
+        color: '#fff',
+
+        '& button:first-child': {
+            padding: 10,
+            borderRadius: 30,
+            backgroundColor: '#1DA1F2',
+            '& svg': {
+                width: 30,
+                height: 30,
+            },
+            '&:hover': {
+                opacity: '0.9',
+            },
+        },
+        '& button:last-child': {
+            color: '#fff',
+            marginTop: 20,
+            fontSize: 17,
+            backgroundColor: '#1DA1F2',
+            '&:hover': {
+                opacity: '0.9',
             },
         },
     },
@@ -124,8 +150,66 @@ export const useHomeStyles = makeStyles(() => ({
         },
     },
     rightSide: {
-        '@media (max-width: 1010px)': {
-            display: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: 348,
+        minWidth: 288,
+    },
+    whatsHappeningContainer: {
+        marginTop: 15,
+        backgroundColor: '#253341',
+        color: '#fff',
+        borderRadius: 10,
+        '& h6': {
+            padding: '5px 15px',
+        },
+    },
+    whatsHappeningTweet: {
+        backgroundColor: '#253341',
+        padding: '5px 15px',
+        borderRadius: 0,
+
+        '& h6': {
+            color: '#fff',
+            padding: 0,
+            fontSize: 15,
+        },
+        '& p': {
+            color: '#8e8a8a',
+            fontSize: 13,
+        },
+        '&:last-of-type': {
+            borderBottomRightRadius: 10,
+            borderBottomLeftRadius: 10,
+        },
+    },
+    whoToFollow: {
+        backgroundColor: '#253341',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '5px 15px',
+        '& div': {
+            marginRight: 10,
+        },
+        '& h6': {
+            color: '#fff',
+            padding: 0,
+            fontSize: 14,
+        },
+        '& p': {
+            color: '#8e8a8a',
+            padding: 0,
+            fontSize: 13,
+        },
+        '& button': {
+            marginLeft: 20,
+        },
+        '& svg': {
+            color: '#1DA1F2',
+        },
+        '&:last-of-type': {
+            borderBottomRightRadius: 10,
+            borderBottomLeftRadius: 10,
         },
     },
 }));
@@ -163,7 +247,7 @@ export const Home = (): React.ReactElement => {
                 <Grid item xs={2} sm={1} md={1} lg={2}>
                     <SideMenu classes={classes} />
                 </Grid>
-                <Grid item xs={9} sm={10} md={8} lg={7}>
+                <Grid item xs={9} sm={9} md={7} lg={6}>
                     <Paper className={classes.tweetsWrapper} variant="outlined">
                         <Paper
                             variant="outlined"
@@ -185,7 +269,13 @@ export const Home = (): React.ReactElement => {
                     </Paper>
                 </Grid>
                 <Hidden smDown>
-                    <Grid item md={3} lg={3} className={classes.rightSide}>
+                    <Grid
+                        item
+                        sm={3}
+                        md={2}
+                        lg={4}
+                        className={classes.rightSide}
+                    >
                         <div style={{ position: 'relative' }}>
                             <SearchInput
                                 fullWidth
@@ -208,6 +298,59 @@ export const Home = (): React.ReactElement => {
                                 }}
                             />
                         </div>
+                        <Paper className={classes.whatsHappeningContainer}>
+                            <Typography variant="h6">
+                                What’s happening
+                            </Typography>
+                            <Divider />
+                            <Paper className={classes.whatsHappeningTweet}>
+                                <Typography variant="h6">Moscow</Typography>
+                                <Typography>Tweets: 13523</Typography>
+                            </Paper>
+                            <Divider />
+                            <Paper className={classes.whatsHappeningTweet}>
+                                <Typography variant="h6">
+                                    #Coronavirus
+                                </Typography>
+                                <Typography>Tweets: 33523</Typography>
+                            </Paper>
+                            <Divider />
+                            <Paper className={classes.whatsHappeningTweet}>
+                                <Typography variant="h6">#Kazakstan</Typography>
+                                <Typography>Tweets: 523</Typography>
+                            </Paper>
+                        </Paper>
+
+                        <Paper className={classes.whatsHappeningContainer}>
+                            <Typography variant="h6">Who to follow</Typography>
+                            <Divider />
+                            <Paper className={classes.whoToFollow}>
+                                <Avatar src="https://hackernoon.com/hn-images/1*y6C4nSvy2Woe0m7bWEn4BA.png" />
+                                <div>
+                                    <Typography variant="h6">
+                                        Dock of shame
+                                    </Typography>
+                                    <Typography>@FavDockOfShame</Typography>
+                                </div>
+                                <IconButton>
+                                    <PersonAddOutlinedIcon />
+                                </IconButton>
+                            </Paper>
+                            <Divider />
+                            <Paper className={classes.whoToFollow}>
+                                <Avatar src="https://hackernoon.com/hn-images/1*y6C4nSvy2Woe0m7bWEn4BA.png" />
+                                <div>
+                                    <Typography variant="h6">
+                                        Dock of shame
+                                    </Typography>
+                                    <Typography>@FavDockOfShame</Typography>
+                                </div>
+                                <IconButton>
+                                    <PersonAddOutlinedIcon />
+                                </IconButton>
+                            </Paper>
+                            <Divider />
+                        </Paper>
                     </Grid>
                 </Hidden>
             </Grid>

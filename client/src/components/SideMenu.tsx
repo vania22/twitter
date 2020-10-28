@@ -7,7 +7,8 @@ import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutline
 import ListAltOutlinedIcon from '@material-ui/icons/ListAltOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
-import { ButtonBase, IconButton, Typography } from '@material-ui/core';
+import CreateIcon from '@material-ui/icons/Create';
+import { Button, ButtonBase, Hidden, Typography } from '@material-ui/core';
 
 import { useHomeStyles } from '../pages/Home';
 
@@ -28,44 +29,71 @@ export const SideMenu: React.FC<SideMenuProps> = ({
             <li className={classes.sideMenuListItem}>
                 <ButtonBase>
                     <LocalOfferOutlinedIcon />
-                    <Typography variant="h6">Search</Typography>
+                    <Hidden mdDown>
+                        <Typography variant="h6">Search</Typography>
+                    </Hidden>
                 </ButtonBase>
             </li>
             <li className={classes.sideMenuListItem}>
                 <ButtonBase>
                     <NotificationsNoneOutlinedIcon />
-                    <Typography variant="h6">Notifications</Typography>
+                    <Hidden mdDown>
+                        <Typography variant="h6">Notifications</Typography>
+                    </Hidden>
                 </ButtonBase>
             </li>
             <li className={classes.sideMenuListItem}>
                 <ButtonBase>
                     <EmailOutlinedIcon />
-                    <Typography variant="h6">Messages</Typography>
+                    <Hidden mdDown>
+                        <Typography variant="h6">Messages</Typography>
+                    </Hidden>
                 </ButtonBase>
             </li>
             <li className={classes.sideMenuListItem}>
                 <ButtonBase>
                     <BookmarkBorderOutlinedIcon />
-                    <Typography variant="h6">Saved</Typography>
+                    <Hidden mdDown>
+                        <Typography variant="h6">Saved</Typography>
+                    </Hidden>
                 </ButtonBase>
             </li>
             <li className={classes.sideMenuListItem}>
                 <ButtonBase>
                     <ListAltOutlinedIcon />
-                    <Typography variant="h6">List</Typography>
+                    <Hidden mdDown>
+                        <Typography variant="h6">List</Typography>
+                    </Hidden>
                 </ButtonBase>
             </li>
             <li className={classes.sideMenuListItem}>
                 <ButtonBase>
                     <PermIdentityOutlinedIcon />
-                    <Typography variant="h6">Profile</Typography>
+                    <Hidden mdDown>
+                        <Typography variant="h6">Profile</Typography>
+                    </Hidden>
                 </ButtonBase>
             </li>
             <li className={classes.sideMenuListItem}>
                 <ButtonBase>
                     <MoreHorizOutlinedIcon />
-                    <Typography variant="h6">More</Typography>
+                    <Hidden mdDown>
+                        <Typography variant="h6">More</Typography>
+                    </Hidden>
                 </ButtonBase>
+            </li>
+            <li className={classes.createTweetSideMenuButton}>
+                <Hidden lgUp>
+                    <ButtonBase>
+                        <CreateIcon />
+                    </ButtonBase>
+                </Hidden>
+
+                <Hidden mdDown>
+                    <Button variant="contained" fullWidth>
+                        Tweet
+                    </Button>
+                </Hidden>
             </li>
         </ul>
     );
