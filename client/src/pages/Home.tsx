@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classnames from 'classnames';
 
 import {
     Container,
@@ -12,9 +13,14 @@ import {
     Divider,
     Avatar,
     IconButton,
+    Button,
+    CircularProgress,
+    TextareaAutosize,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
+import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined';
+import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 
 import { Tweet } from '../components/Tweet';
 import { SideMenu } from '../components/SideMenu';
@@ -212,6 +218,43 @@ export const useHomeStyles = makeStyles(() => ({
             borderBottomLeftRadius: 10,
         },
     },
+    formContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        padding: 15,
+        paddingBottom: 5,
+
+        '& textarea': {
+            width: '100%',
+            marginLeft: 10,
+            minHeight: 50,
+            backgroundColor: '#15202b',
+            color: '#fff',
+            border: 0,
+            borderBottom: '1px solid rgba(103, 100, 100, 0.544)',
+            fontSize: 18,
+            outline: 'none',
+            fontFamily: 'system-ui',
+            resize: 'none',
+
+            '&:focus': {
+                borderBottom: '1px solid #1DA1F2',
+            },
+        },
+    },
+    formHeader: {
+        display: 'flex',
+    },
+    formFooter: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: '5px 10%',
+        '& div': {
+            display: 'flex',
+            alignItems: 'center',
+        },
+    },
 }));
 
 const SearchInput = withStyles({
@@ -255,6 +298,56 @@ export const Home = (): React.ReactElement => {
                         >
                             <Typography variant="h6">Home</Typography>
                         </Paper>
+                        <div className={classes.formContainer}>
+                            <div className={classes.formHeader}>
+                                <Avatar
+                                    alt={`Аватарка пользователя UserAvatar`}
+                                    src="https://pbs.twimg.com/profile_images/796061890451542016/J-O1AguD_bigger.jpg"
+                                />
+                                <TextareaAutosize placeholder="What's happening?" />
+                            </div>
+                            <div className={classes.formFooter}>
+                                <div>
+                                    <IconButton color="primary">
+                                        <ImageOutlinedIcon
+                                            style={{ fontSize: 26 }}
+                                        />
+                                    </IconButton>
+                                    <IconButton color="primary">
+                                        <EmojiEmotionsOutlinedIcon
+                                            style={{ fontSize: 26 }}
+                                        />
+                                    </IconButton>
+                                </div>
+                                <div>
+                                    {/* <span>260</span>
+                                    <div>
+                                        <CircularProgress
+                                            variant="static"
+                                            size={20}
+                                            thickness={5}
+                                            value={100}
+                                        />
+                                        <CircularProgress
+                                            style={{
+                                                color: 'rgba(0, 0, 0, 0.1)',
+                                            }}
+                                            variant="static"
+                                            size={20}
+                                            thickness={5}
+                                            value={100}
+                                        />
+                                    </div> */}
+
+                                    <Button color="primary" variant="contained">
+                                        Tweet
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+                        <Divider
+                            style={{ height: 10, backgroundColor: '#253341' }}
+                        />
                         <Tweet
                             user={{
                                 fullname: 'React Newsletter',
