@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import classnames from 'classnames';
 
 import {
     Container,
@@ -13,19 +12,15 @@ import {
     Divider,
     Avatar,
     IconButton,
-    Button,
-    CircularProgress,
-    TextareaAutosize,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
-import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined';
-import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 
 import { Tweet } from '../components/Tweet';
 import { SideMenu } from '../components/SideMenu';
+import { AddTweetForm } from '../components/AddTweetForm';
 
-export const useHomeStyles = makeStyles(() => ({
+export const useHomeStyles = makeStyles((theme) => ({
     wrapper: {
         height: '100vh',
     },
@@ -36,7 +31,7 @@ export const useHomeStyles = makeStyles(() => ({
     },
     logoSvg: {
         fontSize: '36px !important',
-        color: '#1DA1F2 !important',
+        color: theme.palette.primary.main,
     },
     logoButton: {
         margin: '10px 0',
@@ -45,7 +40,7 @@ export const useHomeStyles = makeStyles(() => ({
     sideMenuListItem: {
         display: 'flex',
         alignItems: 'center',
-        color: '#fff',
+        color: theme.palette.text.primary,
         margin: '5px 0',
         cursor: 'pointer',
 
@@ -55,9 +50,9 @@ export const useHomeStyles = makeStyles(() => ({
             transition: 'background-color 0.2s ease-in-out',
             '&:hover': {
                 backgroundColor: 'rgba(29, 161, 242, 0.1) ',
-                color: '#1DA1F2',
+                color: theme.palette.primary.main,
                 '& svg': {
-                    color: '#1DA1F2',
+                    color: theme.palette.primary.main,
                 },
             },
         },
@@ -72,12 +67,12 @@ export const useHomeStyles = makeStyles(() => ({
         },
     },
     createTweetSideMenuButton: {
-        color: '#fff',
+        color: theme.palette.text.primary,
 
         '& button:first-child': {
             padding: 10,
             borderRadius: 30,
-            backgroundColor: '#1DA1F2',
+            backgroundColor: theme.palette.primary.main,
             '& svg': {
                 width: 30,
                 height: 30,
@@ -87,10 +82,10 @@ export const useHomeStyles = makeStyles(() => ({
             },
         },
         '& button:last-child': {
-            color: '#fff',
+            color: theme.palette.text.primary,
             marginTop: 20,
             fontSize: 17,
-            backgroundColor: '#1DA1F2',
+            backgroundColor: theme.palette.primary.main,
             '&:hover': {
                 opacity: '0.9',
             },
@@ -107,8 +102,8 @@ export const useHomeStyles = makeStyles(() => ({
         height: '100%',
         borderTop: 0,
         borderBottom: 0,
-        backgroundColor: '#15202b',
-        color: '#fff',
+        backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.text.primary,
         borderColor: 'rgba(103, 100, 100, 0.544)',
     },
     tweetsHeader: {
@@ -118,8 +113,8 @@ export const useHomeStyles = makeStyles(() => ({
         borderLeft: 0,
         borderRight: 0,
         borderRadius: 0,
-        backgroundColor: '#15202b',
-        color: '#fff',
+        backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.text.primary,
         padding: '10px 15px',
         minHeight: 53,
         borderColor: 'rgba(103, 100, 100, 0.544)',
@@ -133,9 +128,9 @@ export const useHomeStyles = makeStyles(() => ({
         },
     },
     tweetsUserInfo: {
-        color: '#8e8a8a',
+        color: theme.palette.text.secondary,
         '& b': {
-            color: '#fff',
+            color: theme.palette.text.primary,
         },
     },
     tweetFooter: {
@@ -143,15 +138,15 @@ export const useHomeStyles = makeStyles(() => ({
         width: 450,
     },
     tweetIconContainer: {
-        color: '#8e8a8a',
+        color: theme.palette.text.secondary,
         marginRight: '12.5%',
         '& svg': {
-            color: '#8e8a8a',
+            color: theme.palette.text.secondary,
         },
         '&:hover': {
-            color: '#1DA1F2',
+            color: theme.palette.primary.main,
             '& svg': {
-                color: '#1DA1F2',
+                color: theme.palette.primary.main,
             },
         },
     },
@@ -163,25 +158,25 @@ export const useHomeStyles = makeStyles(() => ({
     },
     whatsHappeningContainer: {
         marginTop: 15,
-        backgroundColor: '#253341',
-        color: '#fff',
+        backgroundColor: theme.palette.primary.contrastText,
+        color: theme.palette.text.primary,
         borderRadius: 10,
         '& h6': {
             padding: '5px 15px',
         },
     },
     whatsHappeningTweet: {
-        backgroundColor: '#253341',
+        backgroundColor: theme.palette.primary.contrastText,
         padding: '5px 15px',
         borderRadius: 0,
 
         '& h6': {
-            color: '#fff',
+            color: theme.palette.text.primary,
             padding: 0,
             fontSize: 15,
         },
         '& p': {
-            color: '#8e8a8a',
+            color: theme.palette.text.secondary,
             fontSize: 13,
         },
         '&:last-of-type': {
@@ -190,7 +185,7 @@ export const useHomeStyles = makeStyles(() => ({
         },
     },
     whoToFollow: {
-        backgroundColor: '#253341',
+        backgroundColor: theme.palette.primary.contrastText,
         display: 'flex',
         alignItems: 'center',
         padding: '5px 15px',
@@ -198,12 +193,12 @@ export const useHomeStyles = makeStyles(() => ({
             marginRight: 10,
         },
         '& h6': {
-            color: '#fff',
+            color: theme.palette.text.primary,
             padding: 0,
             fontSize: 14,
         },
         '& p': {
-            color: '#8e8a8a',
+            color: theme.palette.text.secondary,
             padding: 0,
             fontSize: 13,
         },
@@ -211,7 +206,7 @@ export const useHomeStyles = makeStyles(() => ({
             marginLeft: 20,
         },
         '& svg': {
-            color: '#1DA1F2',
+            color: theme.palette.primary.main,
         },
         '&:last-of-type': {
             borderBottomRightRadius: 10,
@@ -229,8 +224,8 @@ export const useHomeStyles = makeStyles(() => ({
             width: '100%',
             marginLeft: 10,
             minHeight: 50,
-            backgroundColor: '#15202b',
-            color: '#fff',
+            backgroundColor: theme.palette.primary.dark,
+            color: theme.palette.text.primary,
             border: 0,
             borderBottom: '1px solid rgba(103, 100, 100, 0.544)',
             fontSize: 18,
@@ -239,7 +234,7 @@ export const useHomeStyles = makeStyles(() => ({
             resize: 'none',
 
             '&:focus': {
-                borderBottom: '1px solid #1DA1F2',
+                borderBottom: `1px solid ${theme.palette.primary.main}`,
             },
         },
     },
@@ -250,9 +245,27 @@ export const useHomeStyles = makeStyles(() => ({
         display: 'flex',
         justifyContent: 'space-between',
         padding: '5px 10%',
+
         '& div': {
             display: 'flex',
             alignItems: 'center',
+        },
+        '& div:last-of-type': {
+            '& button': {
+                color: theme.palette.text.primary,
+            },
+        },
+    },
+    formCircularProgress: {
+        position: 'relative',
+        display: 'block',
+        width: 20,
+        height: 20,
+        margin: '0 10px',
+        '& .MuiCircularProgress-root': {
+            position: 'absolute',
+            display: 'block',
+            'z-index': 2,
         },
     },
 }));
@@ -298,53 +311,7 @@ export const Home = (): React.ReactElement => {
                         >
                             <Typography variant="h6">Home</Typography>
                         </Paper>
-                        <div className={classes.formContainer}>
-                            <div className={classes.formHeader}>
-                                <Avatar
-                                    alt={`Аватарка пользователя UserAvatar`}
-                                    src="https://pbs.twimg.com/profile_images/796061890451542016/J-O1AguD_bigger.jpg"
-                                />
-                                <TextareaAutosize placeholder="What's happening?" />
-                            </div>
-                            <div className={classes.formFooter}>
-                                <div>
-                                    <IconButton color="primary">
-                                        <ImageOutlinedIcon
-                                            style={{ fontSize: 26 }}
-                                        />
-                                    </IconButton>
-                                    <IconButton color="primary">
-                                        <EmojiEmotionsOutlinedIcon
-                                            style={{ fontSize: 26 }}
-                                        />
-                                    </IconButton>
-                                </div>
-                                <div>
-                                    {/* <span>260</span>
-                                    <div>
-                                        <CircularProgress
-                                            variant="static"
-                                            size={20}
-                                            thickness={5}
-                                            value={100}
-                                        />
-                                        <CircularProgress
-                                            style={{
-                                                color: 'rgba(0, 0, 0, 0.1)',
-                                            }}
-                                            variant="static"
-                                            size={20}
-                                            thickness={5}
-                                            value={100}
-                                        />
-                                    </div> */}
-
-                                    <Button color="primary" variant="contained">
-                                        Tweet
-                                    </Button>
-                                </div>
-                            </div>
-                        </div>
+                        <AddTweetForm classes={classes} />
                         <Divider
                             style={{ height: 10, backgroundColor: '#253341' }}
                         />

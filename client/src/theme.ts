@@ -16,9 +16,9 @@ export const theme = createMuiTheme({
     },
     palette: {
         primary: {
-            main: 'rgb(29, 161, 242)',
-            dark: 'rgb(26, 145, 218)',
-            contrastText: '#fff',
+            main: '#1DA1F2',
+            dark: '#15202b',
+            contrastText: '#253341',
         },
         secondary: {
             main: 'rgb(26, 145, 218)',
@@ -30,7 +30,8 @@ export const theme = createMuiTheme({
             default: '#fff',
         },
         text: {
-            primary: '#14171a',
+            primary: '#fff',
+            secondary: '#8e8a8a',
         },
         action: {
             disabledBackground: 'rgb(153 216 255)',
