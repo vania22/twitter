@@ -48,6 +48,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
                     placeholder="What's happening?"
                     onChange={handleChangeTextarea}
                     value={text}
+                    rowsMax={5}
                 />
             </div>
             <div className={classes.formFooter}>
