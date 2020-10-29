@@ -5,7 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import { useSignInStyles } from '../pages/SignIn';
+import { useSignInStyles } from '../pages/SingIn/theme';
 
 interface ModalBlockProps {
     title?: string;
