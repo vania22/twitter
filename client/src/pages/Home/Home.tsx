@@ -4,48 +4,23 @@ import {
     Container,
     Grid,
     Hidden,
-    InputBase,
     Typography,
-    withStyles,
     Paper,
     Divider,
     Avatar,
     IconButton,
 } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 
 import { useHomeStyles } from './theme';
 import { Tweet } from '../../components/Tweet';
 import { SideMenu } from '../../components/SideMenu';
 import { AddTweetForm } from '../../components/AddTweetForm';
-
-const SearchInput = withStyles({
-    input: {
-        width: '100%',
-        position: 'relative',
-        backgroundColor: '#253341',
-        marginTop: 10,
-        height: 45,
-        padding: 0,
-        paddingLeft: 50,
-        borderRadius: 30,
-        color: '#fff',
-        '&:focus': {
-            border: '1px solid #1DA1F2',
-            borderShadow: 'none',
-        },
-    },
-})(InputBase);
+import SearchTextField from '../../components/SearchTextField';
 
 export const Home = (): React.ReactElement => {
     const classes = useHomeStyles();
-    interface SearchIconColor {
-        searchIconColor: '#1DA1F2' | '#8e8a8a';
-    }
-    const [searchIconColor, setSearchIconColor] = useState<SearchIconColor>({
-        searchIconColor: '#8e8a8a',
-    });
 
     return (
         <Container maxWidth="lg" className={classes.wrapper}>
@@ -86,28 +61,7 @@ export const Home = (): React.ReactElement => {
                         lg={4}
                         className={classes.rightSide}
                     >
-                        <div style={{ position: 'relative' }}>
-                            <SearchInput
-                                fullWidth
-                                placeholder="Search Twitter"
-                                onFocus={() =>
-                                    setSearchIconColor({
-                                        searchIconColor: '#1DA1F2',
-                                    })
-                                }
-                                onBlur={() =>
-                                    setSearchIconColor({
-                                        searchIconColor: '#8e8a8a',
-                                    })
-                                }
-                            />
-                            <SearchIcon
-                                className={classes.searchInputIcon}
-                                style={{
-                                    color: searchIconColor.searchIconColor,
-                                }}
-                            />
-                        </div>
+                        <SearchTextField classes={classes} />
                         <Paper className={classes.whatsHappeningContainer}>
                             <Typography variant="h6">
                                 What’s happening
