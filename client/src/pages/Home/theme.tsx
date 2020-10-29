@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
 
-export const useHomeStyles = makeStyles((theme) => ({
+export const useHomeStyles = makeStyles((theme: Theme) => ({
     wrapper: {
         height: '100vh',
     },

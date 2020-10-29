@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Button, makeStyles, Typography } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
@@ -7,6 +8,7 @@ import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
+
 import { ModalBlock } from '../components/ModalBlock';
 
 export const useStyles = makeStyles(() => ({

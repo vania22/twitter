@@ -1,8 +1,10 @@
 import React from 'react';
+
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import DialogTitle from '@material-ui/core/DialogTitle';
+
 import { useStyles } from '../pages/SignIn';
 
 interface ModalBlockProps {
