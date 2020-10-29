@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField';
 
 import { ModalBlock } from '../components/ModalBlock';
 
-export const useStyles = makeStyles(() => ({
+export const useSignInStyles = makeStyles(() => ({
     wrapper: {
         display: 'flex',
         height: '100vh',
@@ -88,7 +88,7 @@ export const useStyles = makeStyles(() => ({
 }));
 
 export const SignIn = (): React.ReactElement => {
-    const classes = useStyles();
+    const classes = useSignInStyles();
 
     const [visibleModal, setVisibleModal] = React.useState<
         'signIn' | 'signUp'

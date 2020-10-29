@@ -12,6 +12,8 @@ import CreateIcon from '@material-ui/icons/Create';
 import { Button, ButtonBase, Hidden, Typography } from '@material-ui/core';
 
 import { useHomeStyles } from '../pages/Home/theme';
+import { ModalBlock } from './ModalBlock';
+import { AddTweetForm } from './AddTweetForm';
 
 interface SideMenuProps {
     classes: ReturnType<typeof useHomeStyles>;
@@ -20,6 +22,16 @@ interface SideMenuProps {
 export const SideMenu: React.FC<SideMenuProps> = ({
     classes,
 }: SideMenuProps): React.ReactElement => {
+    const [visibleModal, setVisibleModal] = React.useState<boolean>(false);
+
+    const handleClickOpenModal = (): void => {
+        setVisibleModal(true);
+    };
+
+    const handleCloseModal = (): void => {
+        setVisibleModal(false);
+    };
+
     return (
         <ul className={classes.sideMenuList}>
             <li className={classes.sideMenuListItem}>
@@ -86,15 +98,27 @@ export const SideMenu: React.FC<SideMenuProps> = ({
             <li className={classes.createTweetSideMenuButton}>
                 <Hidden lgUp>
                     <ButtonBase>
-                        <CreateIcon />
+                        <CreateIcon onClick={handleClickOpenModal} />
                     </ButtonBase>
                 </Hidden>
 
                 <Hidden mdDown>
-                    <Button variant="contained" fullWidth>
+                    <Button
+                        variant="contained"
+                        fullWidth
+                        onClick={handleClickOpenModal}
+                    >
                         Tweet
                     </Button>
                 </Hidden>
+                <ModalBlock
+                    visible={visibleModal}
+                    onClose={handleCloseModal}
+                    title="Post new tweet"
+                    style={{ width: 550, minHeight: 250 }}
+                >
+                    <AddTweetForm classes={classes} />
+                </ModalBlock>
             </li>
         </ul>
     );

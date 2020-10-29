@@ -5,14 +5,15 @@ import DialogContent from '@material-ui/core/DialogContent';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import { useStyles } from '../pages/SignIn';
+import { useSignInStyles } from '../pages/SignIn';
 
 interface ModalBlockProps {
     title?: string;
     children: React.ReactNode;
-    classes?: ReturnType<typeof useStyles>;
+    classes?: ReturnType<typeof useSignInStyles>;
     visible?: boolean;
     onClose: () => void;
+    style?: React.CSSProperties;
 }
 
 export const ModalBlock: React.FC<ModalBlockProps> = ({
@@ -20,6 +21,7 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({
     onClose,
     visible = false,
     children,
+    style: styleProps,
 }: ModalBlockProps): React.ReactElement | null => {
     if (!visible) {
         return null;
@@ -34,6 +36,7 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({
                 style: {
                     backgroundColor: '#15202B',
                     color: '#fff',
+                    ...styleProps,
                 },
             }}
         >
