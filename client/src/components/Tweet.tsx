@@ -6,7 +6,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ReplyIcon from '@material-ui/icons/Reply';
 import { Avatar, Paper, Typography, Grid, IconButton } from '@material-ui/core';
 
-import { useHomeStyles } from '../pages/Home';
+import { useHomeStyles } from '../pages/Home/theme';
 
 interface TweetProps {
     classes: ReturnType<typeof useHomeStyles>;

@@ -10,7 +10,7 @@ import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
 import CreateIcon from '@material-ui/icons/Create';
 import { Button, ButtonBase, Hidden, Typography } from '@material-ui/core';
 
-import { useHomeStyles } from '../pages/Home';
+import { useHomeStyles } from '../pages/Home/theme';
 
 interface SideMenuProps {
     classes: ReturnType<typeof useHomeStyles>;
