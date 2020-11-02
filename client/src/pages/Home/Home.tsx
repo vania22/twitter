@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     Container,
     Grid,
@@ -18,8 +19,17 @@ import { SideMenu } from '../../components/SideMenu';
 import { AddTweetForm } from '../../components/AddTweetForm';
 import SearchTextField from '../../components/SearchTextField';
 
+import { fetchTweets } from '../../store/ducks/tweets/actions';
+import { selectTweetsItems } from '../../store/ducks/tweets/selectors';
+
 export const Home = (): React.ReactElement => {
     const classes = useHomeStyles();
+    const dispatch = useDispatch();
+    const tweets = useSelector(selectTweetsItems);
+
+    React.useEffect(() => {
+        dispatch(fetchTweets());
+    }, []);
 
     return (
         <Container maxWidth="lg" className={classes.wrapper}>
@@ -39,17 +49,15 @@ export const Home = (): React.ReactElement => {
                         <Divider
                             style={{ height: 10, backgroundColor: '#253341' }}
                         />
-                        <Tweet
-                            user={{
-                                fullname: 'React Newsletter',
-                                username: 'reactnewsletter',
-                                avatarUrl:
-                                    'https://hackernoon.com/hn-images/1*y6C4nSvy2Woe0m7bWEn4BA.png',
-                            }}
-                            text="Official account for 2020 Challenge Cup winners + eight times Mens Super League Champions & Womens Challenge Cup  Super League Double winners Leeds Rhinos"
-                            time="1h"
-                            classes={classes}
-                        />
+                        {tweets.map((tweet) => (
+                            <Tweet
+                                key={tweet._id}
+                                user={tweet.user}
+                                text={tweet.text}
+                                time={tweet.time}
+                                classes={classes}
+                            />
+                        ))}
                     </Paper>
                 </Grid>
                 <Hidden smDown>

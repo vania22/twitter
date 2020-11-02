@@ -1,4 +1,4 @@
-import { TweetsActionTypes } from './ducks/tweets/actions';
+import { TweetsState } from './ducks/tweets/contracts/state';
 import { applyMiddleware, compose, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
@@ -16,6 +16,10 @@ const composeEnhancers =
     compose;
 
 const sagaMiddleware = createSagaMiddleware();
+
+export interface State {
+    tweets: TweetsState;
+}
 
 export const store = createStore(
     rootReducer,

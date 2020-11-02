@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import moment from 'moment';
 
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import RepeatIcon from '@material-ui/icons/Repeat';
@@ -40,7 +41,8 @@ export const Tweet: React.FC<TweetProps> = ({
                 </Grid>
                 <Grid item xs={11}>
                     <Typography className={classes.tweetsUserInfo}>
-                        <b>{user.fullname}</b> @{user.username} · {time}
+                        <b>{user.fullname}</b> @{user.username} ·{' '}
+                        {moment(time).fromNow()}
                     </Typography>
                     <Typography variant="body1">{text}</Typography>
                     <div className={classes.tweetFooter}>

@@ -1,10 +1,12 @@
 export enum LoadingState {
+    NEVER = 'NEVER',
+    LOADING = 'LOADING',
     LOADED = 'LOADED',
     ERROR = 'ERROR',
-    NEVER = 'NEVER',
 }
 
 export interface Tweet {
+    _id: string;
     user: {
         fullname: string;
         username: string;
