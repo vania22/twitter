@@ -10,6 +10,7 @@ import {
     Avatar,
     IconButton,
 } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 
@@ -20,16 +21,20 @@ import { AddTweetForm } from '../../components/AddTweetForm';
 import SearchTextField from '../../components/SearchTextField';
 
 import { fetchTweets } from '../../store/ducks/tweets/actions';
-import { selectTweetsItems } from '../../store/ducks/tweets/selectors';
+import {
+    tweetsIsLoading,
+    selectTweetsItems,
+} from '../../store/ducks/tweets/selectors';
 
 export const Home = (): React.ReactElement => {
     const classes = useHomeStyles();
     const dispatch = useDispatch();
     const tweets = useSelector(selectTweetsItems);
+    const isLoading = useSelector(tweetsIsLoading);
 
     React.useEffect(() => {
         dispatch(fetchTweets());
-    }, []);
+    }, [dispatch]);
 
     return (
         <Container maxWidth="lg" className={classes.wrapper}>
@@ -49,15 +54,21 @@ export const Home = (): React.ReactElement => {
                         <Divider
                             style={{ height: 10, backgroundColor: '#253341' }}
                         />
-                        {tweets.map((tweet) => (
-                            <Tweet
-                                key={tweet._id}
-                                user={tweet.user}
-                                text={tweet.text}
-                                time={tweet.time}
-                                classes={classes}
-                            />
-                        ))}
+                        {isLoading ? (
+                            <div className={classes.tweetsLoaderContainer}>
+                                <CircularProgress />
+                            </div>
+                        ) : (
+                            tweets.map((tweet) => (
+                                <Tweet
+                                    key={tweet._id}
+                                    user={tweet.user}
+                                    text={tweet.text}
+                                    time={tweet.time}
+                                    classes={classes}
+                                />
+                            ))
+                        )}
                     </Paper>
                 </Grid>
                 <Hidden smDown>

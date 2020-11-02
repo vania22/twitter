@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { State } from './../../store';
-import { LoadingState, TweetsState, Tweet } from './contracts/state';
+import { LoadingState, TweetsState } from './contracts/state';
 
 export const selectTweetsState = (state: State): TweetsState => state.tweets;
 
@@ -11,3 +11,6 @@ export const selectTweetsItems = createSelector(
 
 export const selectLoadingState = (state: State): LoadingState =>
     selectTweetsState(state).loadingState;
+
+export const tweetsIsLoading = (state: State): boolean =>
+    selectTweetsState(state).loadingState === LoadingState.LOADING;

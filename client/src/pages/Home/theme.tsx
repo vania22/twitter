@@ -260,4 +260,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
             'z-index': 2,
         },
     },
+    tweetsLoaderContainer: {
+        textAlign: 'center',
+        marginTop: 150,
+    },
 }));
